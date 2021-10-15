@@ -15,11 +15,11 @@ delay = input('Delay: ')
 tokens = open("tokens.txt", "r").read().splitlines()
 proxies = open("proxies.txt", "r").read().splitlines()
 
-def spam(token, channel, mess):
+def spam(token, channel, mess, proxies):
     url = 'https://discord.com/api/v9/channels/'+channel+'/messages'
     data = {"content": mess}
     header = {"authorization": token}
-
+    proxies = proxies
     while True:
         time.sleep(int(delay))
         r = requests.post(url, data=data, headers=header, proxies=proxies)
