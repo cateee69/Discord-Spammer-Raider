@@ -13,7 +13,7 @@ mess = input('Message to spam: ')
 delay = input('Delay: ')
 
 tokens = open("tokens.txt", "r").read().splitlines()
-
+proxies = open("proxies.txt", "r").read().splitlines()
 
 def spam(token, channel, mess):
     url = 'https://discord.com/api/v9/channels/'+channel+'/messages'
@@ -22,7 +22,7 @@ def spam(token, channel, mess):
 
     while True:
         time.sleep(int(delay))
-        r = requests.post(url, data=data, headers=header)
+        r = requests.post(url, data=data, headers=header, proxies=proxies)
         print(r.status_code)
 
 
